@@ -33,11 +33,13 @@ let bfstraversal = [];
 while (queue.length > 0) {
   let current = queue.shift();
   if (!visitedArray[current]) {
+    visitedArray[current] = 1;
     let neighbours = graphList.get(current);
     for (let ele of neighbours) {
-      queue.push(ele);
+      if (!visitedArray[ele]) {
+        queue.push(ele);
+      }
     }
-    visitedArray[current] = 1;
     bfstraversal.push(current);
   }
 }
